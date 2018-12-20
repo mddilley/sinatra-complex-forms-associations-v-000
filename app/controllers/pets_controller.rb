@@ -31,12 +31,13 @@ class PetsController < ApplicationController
   end
 
   patch '/pets/:id' do
+    binding.pry
     @pet = Pet.find_by(:id => params[:id])
     @pet.update(params[:pet])
     if params[:owner][:name].strip != ""
       @pet.owner = Owner.create(:name => params[:owner][:name])
     end
-    binding.pry
+
     redirect to "/pets/#{@pet.id}"
   end
 end
