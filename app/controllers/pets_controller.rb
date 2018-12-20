@@ -33,7 +33,7 @@ class PetsController < ApplicationController
   patch '/pets/:id' do
     @pet = Pet.find_by(:id => params[:id])
     @pet.update(params[:pet])
-    if params[:owner][:name] != ""
+    if params[:owner][:name].strip != ""
       @pet.owner = Owner.create(:name => params[:owner][:name])
       @pet.save
     end
