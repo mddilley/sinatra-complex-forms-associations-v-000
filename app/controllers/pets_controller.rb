@@ -36,7 +36,7 @@ class PetsController < ApplicationController
     if params[:owner][:name].strip != ""
       @pet.owner = Owner.create(:name => params[:owner][:name])
     end
-    pry
+    binding.pry
     redirect to "/pets/#{@pet.id}"
   end
 end
